@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --configuration production",
+    "start": "echo 'Static site: No server required' && exit 0",
+    "build": "ng build --configuration production --output-path=dist/gxreservation-client",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
