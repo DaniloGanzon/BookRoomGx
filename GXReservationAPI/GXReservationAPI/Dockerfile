@@ -1,14 +1,11 @@
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-
-# Copy just the project file first (for efficient layer caching)
-COPY ["BookRoomGx/GXReservationAPI/GXReservationAPI/GXReservationAPI.csproj", "GXReservationAPI/"]
+# Copy just the project file first
+COPY ["GXReservationAPI/GXReservationAPI.csproj", "GXReservationAPI/"]
 RUN dotnet restore "GXReservationAPI/GXReservationAPI.csproj"
-
-# Copy remaining source files
-COPY ["BookRoomGx/GXReservationAPI/GXReservationAPI/", "GXReservationAPI/"]
-
+# Copy remaining files
+COPY . .
 WORKDIR "/src/GXReservationAPI"
 RUN dotnet build "GXReservationAPI.csproj" -c Release -o /app/build
 
