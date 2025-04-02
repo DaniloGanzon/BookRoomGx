@@ -1,0 +1,506 @@
+/* Main Wrapper - Transparent to show background image */
+.calendar-wrapper {
+    background: transparent;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  /* Main Container - Wider and semi-transparent */
+  .calendar-container {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Header */
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .calendar-title {
+    color: #1e293b;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .room-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1e293b;
+    padding: 0.5rem 1rem;
+    max-width: 300px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .room-icon {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5px;
+  }
+  
+  .floor-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1e293b;
+    padding: 0.5rem 1rem;
+    max-width: 300px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .floor-icon {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5px;
+  }
+  
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+  
+  .add-reservation-button {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-reservation-button:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-reservation-button svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 3px;
+  }
+  
+  /* Calendar Layout - Wider */
+  .calendar-layout {
+    display: grid;
+    grid-template-columns: 550px 1fr;
+    gap: 2.5rem;
+    min-height: 600px;
+  }
+  
+  .calendar-side {
+    background: rgba(33, 37, 41, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 600px;
+    color: #f8f9fa;
+    overflow: hidden;
+  }
+  
+  /* Dark Theme for Details Side */
+  .details-side {
+    background: rgba(33, 37, 41, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    color: #f8f9fa;
+  }
+  
+  .room-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1e293b;
+    padding: 0.5rem 1rem;
+    max-width: 300px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .room-status svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2.5px;
+  }
+  
+  /* Status indicator colors */
+  .room-status[data-status="Available"] svg {
+    stroke: #10b981;
+  }
+  
+  .room-status[data-status="Maintenance"] svg {
+    stroke: #f59e0b;
+  }
+  
+  .room-status[data-status="Occupied"] svg {
+    stroke: #ef4444;
+  }
+  
+  .room-status[data-status="Reserved"] svg {
+    stroke: #3b82f6;
+  }
+  
+  /* Calendar Navigation */
+  .calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .month-year {
+    color: #f8f9fa;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .nav-button {
+    background: #343a40;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #f8f9fa;
+  }
+  
+  .nav-button:hover {
+    background: #495057;
+    transform: scale(1.05);
+  }
+  
+  .nav-button svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.5px;
+  }
+  
+  .calendar-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    position: relative;
+  }
+  
+  .day-names {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+  
+  .day-name {
+    text-align: center;
+    color: #adb5bd;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 0;
+  }
+  
+  .week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    min-height: 0;
+    flex: 1;
+    height: 100%;
+  }
+  
+  .day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    aspect-ratio: 1;
+    min-height: 0;
+    overflow: hidden;
+    background: #343a40;
+    justify-content: flex-start;
+  }
+  
+  .day.empty {
+    background: transparent;
+    cursor: default;
+  }
+  
+  .date-number {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #f8f9fa;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.25rem 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .day:hover:not(.empty) {
+    background: #495057;
+    transform: scale(1.05);
+  }
+  
+  .day.today .date-number {
+    color: #4dabf7;
+    font-weight: 700;
+  }
+  
+  .day.today::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 6px;
+    height: 6px;
+    background: #4dabf7;
+    border-radius: 50%;
+  }
+  
+  /* Updated reserved color to light red */
+  .day.reserved {
+    background: rgba(251, 113, 113, 0.2);
+  }
+  
+  .day.reserved .date-number {
+    color: #ff8787;
+    font-weight: 600;
+  }
+  
+  .day.selected {
+    background: #1971c2;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px -1px rgba(25, 113, 194, 0.3);
+  }
+  
+  .day.selected:hover {
+    background: #1864ab;
+  }
+  
+  .day.selected .date-number {
+    color: white;
+  }
+  
+  .reserved-badge {
+    background: #ff6b6b;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    flex-shrink: 0;
+  }
+  
+  .reserved-badge svg {
+    width: 12px;
+    height: 12px;
+    color: white;
+    stroke-width: 2.5px;
+  }
+  
+  .day.selected .reserved-badge {
+    background: white;
+  }
+  
+  .day.selected .reserved-badge svg {
+    color: #ff6b6b;
+  }
+  
+  .select-day-prompt {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: #adb5bd;
+  }
+  
+  .select-day-prompt svg {
+    color: #495057;
+    margin-bottom: 1.5rem;
+  }
+  
+  .select-day-prompt h3 {
+    color: #f8f9fa;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .select-day-prompt p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .add-reservation-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+  }
+  
+  .room-selector {
+    margin-top: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .room-dropdown {
+    background: #1e293b;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    padding-right: 2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .room-dropdown:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  }
+  
+  /* Modern sleek enhancements */
+  .calendar-title {
+    position: relative;
+  }
+  
+  .calendar-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+    border-radius: 2px;
+  }
+  
+  /* Animated transitions */
+  .day, .nav-button, .today-button, 
+  .add-reservation-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .calendar-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .calendar-side {
+        min-height: 500px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .calendar-container {
+        padding: 1.5rem;
+    }
+    
+    .calendar-title {
+        font-size: 2rem;
+    }
+    
+    .header-right {
+        width: 100%;
+        align-items: flex-start;
+    }
+    
+    .day-name {
+        font-size: 0.8rem;
+    }
+    
+    .date-number {
+        font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .calendar-wrapper {
+        padding: 1rem;
+    }
+    
+    .calendar-container {
+        padding: 1rem;
+    }
+    
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+  }

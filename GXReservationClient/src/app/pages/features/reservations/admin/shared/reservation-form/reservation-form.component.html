@@ -1,0 +1,116 @@
+<div class="reservation-form-wrapper">
+  <div class="form-side-decoration"></div>
+  <div class="form-content">
+    <h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      Create New Reservation
+    </h2>
+
+    <form #reservationForm="ngForm" (ngSubmit)="onSubmit()" class="reservation-form">
+      <!-- Name, Purpose, and Room fields remain the same -->
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="startDate">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Start Date
+          </label>
+          <input type="date" id="startDate" 
+                  [(ngModel)]="reservation.startDate"
+                  [min]="minDate"
+                  (change)="onStartDateChange($event)"
+                  name="startDate" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="endDate">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            End Date
+          </label>
+          <input type="date" id="endDate" 
+              [(ngModel)]="reservation.endDate"
+              [min]="reservation.startDate"
+              (change)="onEndDateChange($event)"
+              name="endDate" required>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="timeStart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            Start Time
+          </label>
+          <input type="time" id="timeStart" 
+                [(ngModel)]="reservation.timeStart"
+                (change)="onTimeOrDurationChange()"
+                name="timeStart" 
+                step="3600" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="durationHours">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+            Duration (hours)
+          </label>
+          <input type="number" id="durationHours" 
+                [(ngModel)]="reservation.durationHours"
+                (change)="onTimeOrDurationChange()"
+                name="durationHours" 
+                min="1" max="24" required>
+        </div>
+      </div>
+
+      <!-- Time Summary Section -->
+      <div class="time-summary" *ngIf="calculatedEndTime">
+        <div class="time-summary-item">
+          <span class="label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            End Time:
+          </span>
+          <span class="value">{{ calculatedEndTime }}</span>
+        </div>
+        <div class="time-summary-item" *ngIf="spansMidnight">
+          <span class="label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            Note:
+          </span>
+          <span class="value warning">Event will continue to next day</span>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-button" 
+              [disabled]="!reservationForm.form.valid || !datesValid()">
+        Create Reservation
+      </button>
+    </form>
+  </div>
+</div>

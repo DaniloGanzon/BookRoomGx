@@ -1,0 +1,49 @@
+<div class="management-container">
+    <div class="management-header">
+      <h1>Reservation Management</h1>
+    </div>
+  
+    <div class="tab-navigation">
+      <button 
+        class="tab-button" 
+        [class.active]="activeTab === 'pending'"
+        (click)="activeTab = 'pending'"
+      >
+        Pending Reservations
+      </button>
+      <button 
+        class="tab-button" 
+        [class.active]="activeTab === 'history'"
+        (click)="activeTab = 'history'"
+      >
+        Reservation History
+      </button>
+      <button 
+        class="tab-button" 
+        [class.active]="activeTab === 'all'"
+        (click)="activeTab = 'all'"
+      >
+        All Reservations
+      </button>
+    </div>
+  
+    <div class="tab-content">
+      <!-- Pending Tab -->
+      <app-reservations-list 
+        *ngIf="activeTab === 'pending'"
+        [initialFilter]="'Pending'"
+        [showFilter]="false"
+      ></app-reservations-list>
+  
+      <!-- History Tab -->
+      <app-reservations-list
+        *ngIf="activeTab === 'history'"
+        [initialFilter]="'Rejected'"
+      ></app-reservations-list>
+  
+      <!-- All Reservations Tab -->
+      <app-reservations-list
+        *ngIf="activeTab === 'all'"
+      ></app-reservations-list>
+    </div>
+  </div>

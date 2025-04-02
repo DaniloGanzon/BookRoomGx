@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35716.79 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GXReservationAPI", "GXReservationAPI\GXReservationAPI.csproj", "{1826B5F2-F734-4519-BA3A-1684DE4662BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1826B5F2-F734-4519-BA3A-1684DE4662BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1826B5F2-F734-4519-BA3A-1684DE4662BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1826B5F2-F734-4519-BA3A-1684DE4662BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1826B5F2-F734-4519-BA3A-1684DE4662BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CFAD64A-45F7-4462-BB22-EC82919D8C55}
+	EndGlobalSection
+EndGlobal
