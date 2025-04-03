@@ -18,12 +18,6 @@
 **/.dockerignore
 **/Dockerfile*
 
-# Environment files (sensitive data!)
-**/appsettings*.json
-**/environments/environment.ts
-.env
-.env.local
-
 # IDE
 .idea/
 *.swp
