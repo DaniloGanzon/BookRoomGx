@@ -1,0 +1,9 @@
+[build]
+  base = "GXReservationClient"             # Points to your Angular subfolder
+  command = "npm install && npm run build" # Runs inside the base directory
+  publish = "GXReservationClient/dist/gxreservation-client" # Your build output
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
