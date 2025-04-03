@@ -52,16 +52,7 @@
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  /* Add this to push all content to the right */
   margin-left: auto;
-}
-
-/* Add this new class to wrap all room info except the dropdown */
-.room-info-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .room-info,
@@ -265,9 +256,8 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  padding-bottom: 100%; /* Makes the cell square */
-  height: 0;
   padding-bottom: 100%;
+  height: 0;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.05);
   justify-content: flex-start;
@@ -277,28 +267,6 @@
   background: transparent;
   border-color: transparent;
   cursor: default;
-}
-
-.day.has-reservations {
-  background: rgba(251, 113, 113, 0.15) !important;
-}
-
-.day.has-reservations .date-number {
-  color: #ff8787 !important;
-}
-
-.reservation-indicators {
-  /* Replace the existing .reservation-indicators with this */
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgba(255, 107, 107, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .date-number {

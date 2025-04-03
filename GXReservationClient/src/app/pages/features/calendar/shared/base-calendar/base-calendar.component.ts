@@ -9,7 +9,6 @@ import { Room } from '../../../../../model/Room';
 import { RoomService } from '../../../../../services/features/room.service';
 import { FormsModule } from '@angular/forms';
 import { Observable, map } from 'rxjs';
-import { CalendarReservationFormComponent } from '../calendar-reservation-form/calendar-reservation-form.component';
 import { Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
@@ -19,7 +18,6 @@ import { ToastrService } from 'ngx-toastr';
   imports: [
     CommonModule,
     FormsModule,
-    CalendarReservationFormComponent
   ],
   templateUrl: './base-calendar.component.html',
   styleUrls: ['./base-calendar.component.css']
