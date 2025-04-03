@@ -1,7 +1,7 @@
 [build]
-  base = "GXReservationClient"             # Points to your Angular subfolder
-  command = "npm install && npm run build" # Runs inside the base directory
-  publish = "GXReservationClient/dist/gxreservation-client" # Your build output
+  base = "GXReservationClient"       # Netlify will cd into this folder
+  command = "npm install && npm run build"
+  publish = "dist/gxreservation-client"  # Now relative to base directory
 
 [[redirects]]
   from = "/*"
