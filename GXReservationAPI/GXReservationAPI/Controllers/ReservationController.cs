@@ -34,16 +34,7 @@ namespace GXReservationAPI.Controllers
         {
             try
             {
-                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var isAdmin = User.IsInRole(Roles.Admin);
-
                 var reservations = await _reservationService.GetAllAsync();
-
-                if (!isAdmin)
-                {
-                    reservations = reservations.Where(r => r.UserId == userId).ToList();
-                }
-
                 var reservationDtos = await MapReservationsToDtos(reservations);
                 return Ok(reservationDtos);
             }
@@ -53,6 +44,7 @@ namespace GXReservationAPI.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ReservationDTO>> GetReservationById(int id)
