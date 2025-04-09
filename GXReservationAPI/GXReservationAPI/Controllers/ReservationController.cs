@@ -30,6 +30,7 @@ namespace GXReservationAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = Roles.Admin)]
         public async Task<ActionResult<IEnumerable<ReservationDTO>>> GetAllReservations()
         {
             try
@@ -113,6 +114,26 @@ namespace GXReservationAPI.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error creating reservation");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpGet("user/{userId}")]
+        [Authorize(Roles = Roles.Admin)]
+        public async Task<ActionResult<IEnumerable<ReservationDTO>>> GetAllReservationsForUser(string userId)
+        {
+            try
+            {
+                var reservations = (await _reservationService.GetAllAsync())
+                    .Where(r => r.UserId == userId)
+                    .ToList();
+
+                var reservationDtos = await MapReservationsToDtos(reservations);
+                return Ok(reservationDtos);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting all reservations for user {userId}");
                 return StatusCode(500, "Internal server error");
             }
         }
