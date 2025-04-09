@@ -61,7 +61,7 @@ namespace GXReservationAPI.Services
         public async Task<bool> IsRoomAvailableAsync(int roomId, DateOnly startDate, DateOnly endDate, TimeOnly timeStart, TimeSpan duration)
         {
             var reservations = await _context.Reservation
-                .Where(r => r.RoomId == roomId && r.Status != ReservationStatus.Rejected)
+                .Where(r => r.RoomId == roomId && r.Status != ReservationStatus.Approved)
                 .ToListAsync();
             foreach (var reservation in reservations)
             {

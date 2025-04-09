@@ -34,7 +34,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCors", builder =>
     {
-        builder.WithOrigins("http://localhost:4200")
+        builder.WithOrigins("https://gxreservationroomclient.onrender.com")
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials();
