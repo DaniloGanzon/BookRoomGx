@@ -30,7 +30,7 @@ namespace GXReservationAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize(Roles = $"{Roles.Admin},{Roles.Employee}")]
         public async Task<ActionResult<IEnumerable<ReservationDTO>>> GetAllReservations()
         {
             try
@@ -119,7 +119,7 @@ namespace GXReservationAPI.Controllers
         }
 
         [HttpGet("user/{userId}")]
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize(Roles = $"{Roles.Admin},{Roles.Employee}")]
         public async Task<ActionResult<IEnumerable<ReservationDTO>>> GetAllReservationsForUser(string userId)
         {
             try
