@@ -9,7 +9,6 @@
 
 # Angular
 **/node_modules/
-**/dist/
 *.tmp
 *.log
 .angular/

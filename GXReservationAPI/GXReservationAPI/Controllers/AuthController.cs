@@ -91,7 +91,7 @@ namespace GXReservationAPI.Controllers
                 issuer: _configuration["AppSettings:Issuer"],
                 audience: _configuration["AppSettings:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddDays(5),
                 signingCredentials: creds
             );
 
